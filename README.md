@@ -11,7 +11,8 @@ Vite + React + TypeScript, fiel ao **PARU Brand Guideline** (ver `plan.md`).
 ```bash
 npm install
 npm run dev      # http://localhost:5173
-npm run build    # gera ./dist para publicar (Vercel, Netlify, Cloudflare Pages)
+npm run build    # gera ./dist pré-renderizado (HTML com conteúdo + CSS embutido)
+npm run preview  # serve o ./dist localmente
 ```
 
 ## Onde editar o conteúdo

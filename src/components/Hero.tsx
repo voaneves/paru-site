@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { ArrowDown, Play } from 'lucide-react';
+import { ArrowDown, CalendarDays, Play } from 'lucide-react';
 import { BrandBar, CatHead, Wordmark } from './Brand';
 import { SITE } from '../config/site';
 import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion';
@@ -16,11 +16,14 @@ const BOOT = [
 
 export function Hero() {
   const reduced = usePrefersReducedMotion();
-  const [lines, setLines] = useState(reduced ? BOOT.length : 0);
+  const [lines, setLines] = useState(0);
   const [time, setTime] = useState('');
 
   useEffect(() => {
-    if (reduced) return;
+    if (reduced) {
+      setLines(BOOT.length);
+      return;
+    }
     const t = window.setInterval(() => setLines((n) => (n >= BOOT.length ? n : n + 1)), 380);
     return () => window.clearInterval(t);
   }, [reduced]);
@@ -55,7 +58,7 @@ export function Hero() {
             <Play size={16} fill="currentColor" /> Ouvir agora
           </a>
           <a href="#shows" className="btn btn--ghost">
-            Próximos shows
+            <CalendarDays size={16} /> Próximos shows
           </a>
         </div>
       </div>

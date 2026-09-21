@@ -17,7 +17,54 @@
     <meta property="og:url" content="https://voaneves.github.io/paru-site/" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href="https://voaneves.github.io/paru-site/" />
+    <meta name="robots" content="index, follow" />
     <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <!-- textura do topo é o maior elemento da primeira dobra: baixar cedo -->
+    <link rel="preload" as="image" type="image/webp" href="/brand/texture-green.webp" fetchpriority="high" />
+
+    <script type="application/ld+json">
+{
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "MusicGroup",
+            "@id": "https://voaneves.github.io/paru-site/#paru",
+            "name": "PARU",
+            "alternateName": "Paulo Victor",
+            "genre": [
+              "Indie Dance",
+              "Minimal Deep Tech"
+            ],
+            "description": "DJ e produtor. Arquitetura sonora para mentes conectadas.",
+            "url": "https://voaneves.github.io/paru-site/",
+            "image": "https://voaneves.github.io/paru-site/brand/og-image.jpg",
+            "logo": "https://voaneves.github.io/paru-site/brand/paru-wordmark.svg",
+            "sameAs": [
+              "https://instagram.com/paruvegan"
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://voaneves.github.io/paru-site/#site",
+            "name": "PARU — site oficial",
+            "url": "https://voaneves.github.io/paru-site/",
+            "inLanguage": "pt-BR",
+            "about": {
+              "@id": "https://voaneves.github.io/paru-site/#paru"
+            },
+            "creator": {
+              "@type": "Person",
+              "name": "Victor Neves",
+              "url": "https://voaneves.com",
+              "sameAs": [
+                "https://github.com/voaneves"
+              ]
+            }
+          }
+        ]
+      }
+    </script>
 
     <!-- Tipografia do brandbook: Codec Pro (títulos/logo), Fira Code (terminal), Inter (texto).
          Codec Pro é fonte comercial (Zetafonts) — ver public/fonts/LEIA-ME.txt.

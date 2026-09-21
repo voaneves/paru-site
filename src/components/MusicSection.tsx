@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { Pause, Play } from 'lucide-react';
+import { ExternalLink, Pause, Play } from 'lucide-react';
 import { TRACKS, type Track } from '../data/tracks';
 import { SITE } from '../config/site';
 import { DemoTag, SectionHead } from './Brand';
@@ -22,7 +22,7 @@ function PlatformLinks({ track }: { track: Track }) {
     <div className="platforms">
       {available.map((p) => (
         <a key={p.key} className="chip" href={track.links[p.key]} target="_blank" rel="noreferrer">
-          {p.label} ↗
+          {p.label} <ExternalLink size={12} aria-hidden="true" />
         </a>
       ))}
     </div>
@@ -60,7 +60,8 @@ export function MusicSection() {
     return (
       <section id="musica" className="section" aria-labelledby="musica-title">
         <div className="container">
-          <SectionHead id="musica-title" cmd="ls ./frequencias" title="Frequências" lead="Novos lançamentos em compilação. Siga PARU para ser o primeiro a ouvir." />
+          <SectionHead
+          section="musica" id="musica-title" cmd="ls ./frequencias" title="Frequências" lead="Novos lançamentos em compilação. Siga PARU para ser o primeiro a ouvir." />
         </div>
       </section>
     );
@@ -72,6 +73,7 @@ export function MusicSection() {
     <section id="musica" className="section" aria-labelledby="musica-title">
       <div className="container">
         <SectionHead
+          section="musica"
           id="musica-title"
           cmd="ls ./frequencias"
           tag={hasDemo ? <DemoTag /> : undefined}
@@ -158,12 +160,12 @@ export function MusicSection() {
           <div className="follow">
             {SITE.links.spotify && (
               <a className="btn btn--ghost" href={SITE.links.spotify} target="_blank" rel="noreferrer">
-                Seguir no Spotify ↗
+                Seguir no Spotify <ExternalLink size={14} aria-hidden="true" />
               </a>
             )}
             {SITE.links.soundcloud && (
               <a className="btn btn--ghost" href={SITE.links.soundcloud} target="_blank" rel="noreferrer">
-                Sets no SoundCloud ↗
+                Sets no SoundCloud <ExternalLink size={14} aria-hidden="true" />
               </a>
             )}
           </div>

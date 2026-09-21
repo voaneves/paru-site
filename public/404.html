@@ -1,0 +1,38 @@
+<!doctype html>
+<!-- PARU — página 404. Criado por Victor Neves · https://voaneves.com -->
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title>404 — PARU</title>
+    <style>
+      html,body{margin:0;height:100%;background:#000;color:#f9f9f9;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+      main{min-height:100%;display:grid;place-items:center;text-align:center;padding:24px;box-sizing:border-box}
+      pre{color:#12fe07;font-size:14px;line-height:1.7;text-align:left;margin:0 auto 28px;display:inline-block}
+      .pink{color:#ff2e88}
+      a{display:inline-block;background:#12fe07;color:#000;font-weight:700;letter-spacing:.06em;text-decoration:none;padding:14px 22px;text-transform:uppercase}
+      a:focus-visible{outline:2px solid #f9f9f9;outline-offset:3px}
+      .bar{height:6px;width:220px;margin:32px auto 0;background:linear-gradient(90deg,#12fe07 0 72%,#ff2e88 72%)}
+    </style>
+  </head>
+  <body>
+    <main>
+      <div>
+        <pre>&gt; REQUEST: <span id="p"></span>
+&gt; STATUS: <span class="pink">404 // ROTA NÃO ENCONTRADA</span>
+&gt; FREQUÊNCIA PERDIDA. RECALIBRANDO...</pre>
+        <br />
+        <a id="home" href="/">Voltar ao sistema</a>
+        <div class="bar"></div>
+      </div>
+    </main>
+    <script>
+      // No GitHub Pages de projeto o site mora em /<repo>/; em domínio próprio, em /.
+      var seg = location.pathname.split('/')[1];
+      var base = location.hostname.endsWith('github.io') && seg ? '/' + seg + '/' : '/';
+      document.getElementById('home').href = base;
+      document.getElementById('p').textContent = location.pathname;
+    </script>
+  </body>
+</html>

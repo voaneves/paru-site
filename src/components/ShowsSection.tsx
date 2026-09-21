@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { ArrowUpRight } from 'lucide-react';
+import { CalendarPlus, MapPin, MessageCircle, Send, Ticket } from 'lucide-react';
+import { downloadIcs } from '../services/ics';
 import type { Show } from '../data/shows';
 import { loadShows } from '../services/calendarService';
 import { whatsappLink } from '../config/site';
@@ -37,6 +38,7 @@ export function ShowsSection() {
     <section id="shows" className="section section--chassi" aria-labelledby="shows-title">
       <div className="container">
         <SectionHead
+          section="shows"
           id="shows-title"
           cmd="cat ./agenda.log"
           tag={hasDemo ? <DemoTag /> : undefined}
@@ -77,6 +79,7 @@ export function ShowsSection() {
                       {s.state ? <span className="dim">, {s.state}</span> : null}
                     </span>
                     <span className="show__venue mono">
+                      <MapPin size={13} aria-hidden="true" className="show__pin" />
                       {s.venue}
                       {s.event ? <span className="dim"> // {s.event}</span> : null}
                     </span>
@@ -84,11 +87,19 @@ export function ShowsSection() {
                   <div className="show__action">
                     {canBuy ? (
                       <a className={`btn ${s.status === 'few-left' ? 'btn--pink' : 'btn--primary'} btn--sm`} href={s.ticketUrl} target="_blank" rel="noreferrer">
-                        {st.label} <ArrowUpRight size={16} />
+                        <Ticket size={16} aria-hidden="true" /> {st.label}
                       </a>
                     ) : (
                       <span className={`status mono ${st.tone}`}>{st.label}</span>
                     )}
+                    <button
+                      className="icon-btn icon-btn--square"
+                      onClick={() => downloadIcs(s)}
+                      aria-label={`Salvar o show de ${s.city} na sua agenda`}
+                      title="Salvar na agenda"
+                    >
+                      <CalendarPlus size={18} />
+                    </button>
                   </div>
                 </li>
               );
@@ -103,10 +114,10 @@ export function ShowsSection() {
           </div>
           <div className="book-cta__actions">
             <a className="btn btn--primary" href="#booking">
-              Solicitar data
+              <Send size={16} aria-hidden="true" /> Solicitar data
             </a>
             <a className="btn btn--ghost" href={whatsappLink('Olá! Quero consultar disponibilidade de data para o PARU.')} target="_blank" rel="noreferrer">
-              WhatsApp ↗
+              <MessageCircle size={16} aria-hidden="true" /> WhatsApp
             </a>
           </div>
         </aside>

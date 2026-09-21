@@ -1,4 +1,4 @@
-import { Download } from 'lucide-react';
+import { Download, FileText, UserRound } from 'lucide-react';
 import { SITE, whatsappLink } from '../config/site';
 import { BrandBar } from './Brand';
 
@@ -8,10 +8,11 @@ const BINARY = '1010011000101110010100101010011001010101010110100110001'.repeat(
 export function AboutSection() {
   return (
     <section id="arquiteto" className="section about" aria-labelledby="about-title">
+      {/* textura decorativa: texto via CSS (content) para não entrar na leitura de tela */}
       <div className="about__binary mono" aria-hidden="true">
-        {BINARY.slice(0, 4)}
-        <span className="pink">1010</span>
-        {BINARY.slice(4)}
+        <span data-bits={BINARY.slice(0, 4)} />
+        <span className="pink" data-bits="1010" />
+        <span data-bits={BINARY.slice(4)} />
       </div>
       <div className="container about__grid">
         <figure className="about__photo">
@@ -23,6 +24,9 @@ export function AboutSection() {
 
         <div className="about__body">
           <p className="prompt">
+            <span className="prompt__icon" aria-hidden="true">
+              <UserRound size={16} />
+            </span>
             <span className="prompt__user">user@paru-sys</span>:~$ whoami
           </p>
           <h2 id="about-title" className="display">
@@ -62,7 +66,7 @@ export function AboutSection() {
               </a>
             )}
             <a className="btn btn--ghost" href="#booking">
-              Rider técnico
+              <FileText size={16} /> Rider técnico
             </a>
           </div>
         </div>

@@ -45,7 +45,8 @@ export function BookingSection() {
   return (
     <section id="booking" className="section" aria-labelledby="booking-title">
       <div className="container">
-        <SectionHead id="booking-title" cmd="./booking.sh --new" title="Get in touch" lead="Canal direto para clubs, festivais, selos e imprensa." />
+        <SectionHead
+          section="booking" id="booking-title" cmd="./booking.sh --new" title="Get in touch" lead="Canal direto para clubs, festivais, selos e imprensa." />
 
         <div className="booking">
           <div>
@@ -82,7 +83,7 @@ export function BookingSection() {
             </li>
           </ul>
           <div className="booking__avatar" aria-hidden="true">
-            <img src="./brand/cat-sit.webp" alt="" loading="lazy" />
+            <img src="./brand/cat-sit.webp" alt="" loading="lazy" width={406} height={470} />
             <p className="mono dim">
               &gt; AVATAR DO SISTEMA: ONLINE
               <br />

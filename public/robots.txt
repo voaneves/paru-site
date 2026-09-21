@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://voaneves.github.io/paru-site/sitemap.xml

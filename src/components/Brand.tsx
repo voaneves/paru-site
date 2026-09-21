@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react';
 import { CAT_HEAD, WORDMARK } from './brandPaths';
+import { navIcon } from '../config/nav';
 import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion';
 
 const flip = (h: number) => `translate(0,${h}) scale(0.1,-0.1)`;
@@ -74,8 +75,9 @@ export function CatHead({ className = '', pulse = true, interactive = false, mon
       ref={ref}
       className={`cat-head ${glow ? 'is-glow' : ''} ${className}`}
       viewBox={`0 0 ${CAT_HEAD.w} ${h}`}
-      role="img"
-      aria-label={label}
+      role={label ? 'img' : undefined}
+      aria-label={label || undefined}
+      aria-hidden={label ? undefined : true}
     >
       <g transform={flip(CAT_HEAD.h)}>
         <path fill={green} d={CAT_HEAD.outline} className="cat-head__outline" />
@@ -112,21 +114,30 @@ export function BrandBar({ className = '' }: { className?: string }) {
 
 /** Cabeçalho de seção: prompt de terminal (Fira Code) + título Codec Pro. */
 export function SectionHead({
+  section,
   cmd,
   title,
   lead,
   tag,
   id,
 }: {
+  /** id da seção em NAV — define o ícone do prompt */
+  section?: string;
   cmd: string;
   title: ReactNode;
   lead?: ReactNode;
   tag?: ReactNode;
   id?: string;
 }) {
+  const Icon = section ? navIcon(section) : undefined;
   return (
     <header className="section-head">
       <p className="prompt">
+        {Icon && (
+          <span className="prompt__icon" aria-hidden="true">
+            <Icon size={16} />
+          </span>
+        )}
         <span className="prompt__user">user@paru-sys</span>:~$ {cmd}
         {tag}
       </p>

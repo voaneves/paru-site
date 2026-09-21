@@ -61,7 +61,7 @@ export function MascotCompanion({ section }: { section: string }) {
   if (hidden)
     return (
       <button className="mascot-restore" onClick={show} aria-label="Mostrar o mascote">
-        <img src="./brand/cat-head-neon.webp" alt="" width={28} />
+        <img src="./brand/cat-head-neon.webp" alt="" width={28} height={39} />
       </button>
     );
 

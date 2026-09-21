@@ -187,6 +187,8 @@ Single page com navegação por âncoras:
 | 1 | Design system fiel (cores, fontes, logo e mascote oficiais) | Feito |
 | 2 | Hero da capa + mascote interativo + avatar por seção | Feito |
 | 3 | Música, agenda, sobre, booking, rodapé; responsivo e acessível | Feito |
+| 3.1 | Navegação e ícones (§8) | Feito |
+| 3.2 | Performance, acessibilidade e SEO (§9) | Feito |
 | 4 | Conteúdo real do PARU (lista §7) | Aguardando |
 | 5 | Domínio, deploy, og:image com URL absoluta, Lighthouse 95+ | Depois da etapa 4 |
 
@@ -203,6 +205,57 @@ Single page com navegação por âncoras:
 7. **Licença web da Codec Pro** (Zetafonts) — a licença do Canva não cobre site. Enquanto isso, o site usa Outfit (visual muito próximo). Instruções em `public/fonts/LEIA-ME.txt`.
 8. **Domínio** (ex.: `parumusic.com.br`) — depois disso, trocar `og:image` para URL absoluta no `index.html`.
 9. Mudar `showDemoContent` para `false` em `src/config/site.ts`.
+
+## 8. Navegação e ícones (v1.1)
+
+**Diagnóstico da navegação atual**
+- Página longa (6 seções) sem indicação de onde o visitante está nem de quanto falta.
+- Menu do celular escondido no ícone ☰, no topo — longe do polegar.
+- "Booking" some do menu desktop (só existe o botão "Contratar", que não mostra estado ativo).
+- Links e botões só com texto: pouca leitura rápida, principalmente no celular.
+- A URL não muda ao rolar: não dá para compartilhar o link direto de "Shows".
+- Datas da agenda sem ação útil além do ingresso.
+
+**Plano**
+
+| # | Melhoria | Onde | Ícones (lucide) |
+| :-: | :--- | :--- | :--- |
+| 1 | Configuração única da navegação (id, rótulo, ícone, comando de terminal) usada por todos os menus | `src/config/nav.ts` | — |
+| 2 | Menu desktop com ícone + rótulo, "Booking" com estado ativo no botão "Contratar" | Header | Disc3, CalendarDays, UserRound, Send |
+| 3 | Barra de progresso de leitura verde→rosa (a barra-assinatura do brandbook) na base do header | Header | — |
+| 4 | Atalho de WhatsApp no header | Header | MessageCircle |
+| 5 | **Barra de abas fixa no rodapé do celular** (Música · Shows · Sobre · Booking), com ícone, rótulo e aba ativa em verde — substitui o menu ☰ | Novo `MobileTabBar` | mesmos do item 2 |
+| 6 | **Índice lateral no desktop** (01–05 + Topo) estilo terminal, com a seção ativa marcada e rótulo ao passar o mouse | Novo `SectionRail` | ArrowUp |
+| 7 | URL acompanha a seção (`#shows`, `#musica`…) sem pular a página | `useActiveSection` | — |
+| 8 | Ícone no prompt de cada seção + ícones nos botões principais (ouvir, agenda, ingressos, WhatsApp, rider, press kit) | Seções | Play, CalendarDays, Ticket, MessageCircle, FileText, Download |
+| 9 | Agenda: pino de local, e botão **"Salvar na agenda"** que baixa o evento (.ics) para Google/Apple/Outlook | Shows | MapPin, CalendarPlus |
+| 10 | No celular, o mascote flutuante sai de cena (a barra de abas tem prioridade; o felino segue no topo da página) | CSS | — |
+
+**Critérios de aceite**: alvos de toque ≥ 44 px; `aria-current` no item ativo; navegação 100% por teclado; sem rolagem horizontal em 360 px; respeita movimento reduzido.
+
+## 9. Performance, acessibilidade e SEO (v1.2)
+
+Auditoria com Lighthouse (celular com 4G simulado e desktop) e axe-core (WCAG 2.1 AA).
+
+| Métrica | Antes | Depois |
+| :--- | :-: | :-: |
+| Performance — celular | 86 | **93** |
+| Performance — desktop | 100 | 100 |
+| Acessibilidade | 100 (axe: 2 falhas graves) | **100 (axe: 0 falhas)** |
+| Boas práticas | 100 | 100 |
+| SEO | 92 | **100** |
+| LCP — celular | 3,3 s | **2,8 s** |
+
+**O que foi feito**
+- **Pré-renderização no build** (`scripts/prerender.mjs`): o HTML já sai com todo o conteúdo e o React só "hidrata". A página aparece antes do JavaScript carregar e os buscadores leem o texto.
+- **CSS embutido no HTML**: uma requisição a menos antes da primeira pintura.
+- **Texturas do topo em WebP** (190 KB → 40 KB) e pré-carregadas com prioridade alta.
+- **Imagens com largura/altura** declaradas (sem saltos de layout).
+- **SEO**: `robots.txt`, `sitemap.xml`, URL canônica e dados estruturados (JSON-LD `MusicGroup` do PARU + `WebSite` com o criador).
+- **Página 404** na identidade ("frequência perdida") com retorno ao site.
+- **Acessibilidade**: ícones decorativos do mascote ocultos para leitores de tela; fundo binário decorativo fora da árvore de leitura; verde do manifesto no fundo branco escurecido para 4,5:1; título "Brand Philosophy" com contorno escuro fino.
+
+**Observação**: no GitHub Pages de projeto, o `robots.txt` fica em `/paru-site/robots.txt` e não na raiz do domínio. Com domínio próprio ele passa a valer automaticamente; até lá, enviar o `sitemap.xml` pelo Google Search Console.
 
 ---
 *Plano elaborado por Victor Neves a partir do `PARU Brand Guideline Presentation.pdf` e da análise dos benchmarks Martin Garrix, James Hype e Peggy Gou.*
