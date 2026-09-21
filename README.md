@@ -1,32 +1,41 @@
-# React + TypeScript + Vite
+# PARU — site oficial
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Indie Dance & Minimal Deep Tech. *Arquitetura sonora para mentes conectadas.*
 
-Currently, two official plugins are available:
+Vite + React + TypeScript, fiel ao **PARU Brand Guideline** (ver `plan.md`).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Rodar
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+npm install
+npm run dev      # http://localhost:5173
+npm run build    # gera ./dist para publicar (Vercel, Netlify, Cloudflare Pages)
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+## Onde editar o conteúdo
+
+| O quê | Arquivo |
+| --- | --- |
+| Contatos, redes, press kit, modo exemplo | `src/config/site.ts` |
+| Lançamentos | `src/data/tracks.ts` |
+| Agenda de shows | `src/data/shows.ts` (ou Google Calendar via `.env`) |
+| Cores, fontes, espaçamentos | `src/index.css` (tokens no `:root`) |
+| Logo, mascote, texturas, foto | `public/brand/` (extraídos do brandbook) |
+
+Google Calendar (opcional), em `.env`:
+
+```
+VITE_GOOGLE_CALENDAR_ID=xxxx@group.calendar.google.com
+VITE_GOOGLE_CALENDAR_API_KEY=AIza...
+```
+
+## Fontes
+
+Codec Pro (títulos) é comercial — coloque os `.woff2` licenciados em `src/fonts/` (ver `public/fonts/LEIA-ME.txt`).
+Até lá o site usa Outfit. Fira Code e Inter estão auto-hospedadas em `src/fonts/` (licença OFL).
+
+## Deploy (GitHub Pages)
+
+O workflow `.github/workflows/deploy.yml` faz build e publica a cada push na `main`.
+Uma vez só: **Settings → Pages → Source: GitHub Actions**.
+Endereço: https://voaneves.github.io/paru-site/

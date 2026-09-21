@@ -1,0 +1,12 @@
+CODEC PRO — fonte oficial dos títulos no brandbook PARU
+=======================================================
+O brandbook usa Codec Pro (Bold / ExtraBold) nos títulos.
+Ela é comercial (Zetafonts). A licença do Canva NÃO cobre uso em site.
+
+Para ativar no site:
+1. Comprar a licença WEB da Codec Pro (zetafonts.com), pesos Bold (700) e ExtraBold (800).
+2. Colocar os arquivos em src/fonts/ com estes nomes:
+     CodecPro-Bold.woff2
+     CodecPro-ExtraBold.woff2
+3. Em src/index.css, nos dois @font-face da Codec Pro, descomentar o trecho url(...).
+Sem os arquivos, o site usa "Outfit" (src/fonts) como substituto.

@@ -1,195 +1,207 @@
 # PARU // Arquitetura Sonora — Plano Mestre do Website
 
-> **Status do Documento**: Proposta Estratégica & Arquitetural  
-> **Artista**: Paulo Victor (PARU) — DJ & Produtor Musical  
-> **Gênero**: Indie Dance & Minimal Deep Tech  
-> **Data**: Setembro de 2026  
+> **Status**: em desenvolvimento
+> **Artista**: Paulo Victor (PARU) — DJ & produtor musical
+> **Gênero**: Indie Dance & Minimal Deep Tech
+> **Fonte de verdade**: `PARU Brand Guideline Presentation.pdf` (16 páginas, Canva, set/2026)
+> **Revisão**: setembro de 2026
 
 ---
 
-## 1. Visão Geral & Propósito
+## 0. Regras de fidelidade à marca
 
-O objetivo deste projeto é criar uma plataforma digital de presença global para o DJ e produtor **PARU**, posicionando-o como uma referência de autoridade, precisão técnica e vanguarda musical.
+Checklist usado para garantir que cada elemento do site segue o brandbook. Vale para qualquer peça nova.
 
-O conceito do site traduz o manifesto do artista:  
+| # | Item | Diretriz do brandbook | Como o site aplica | Evitar |
+| :-: | :--- | :--- | :--- | :--- |
+| 1 | **Mascote** | Felino em **traço neon verde contínuo** e arredondado, **olhos quadrados rosa (pixel)**, **nariz triangular rosa**, **pulso/ECG rosa** abaixo da cabeça ou no peito, **pixels rosa na ponta da cauda** (págs. 11–12) | Cabeça vetorizada a partir do arquivo original + poses oficiais em `public/brand/` | Versões facetadas/low-poly, olhos redondos, recolorir |
+| 2 | **Poses** | 6 oficiais: Cabeça, Sentado, 01 Stretch (frente), 02 Pounce (3/4 esq.), 03 Rest (3/4 dir.), 04 Prowl (perfil dir.) (pág. 11) | Só essas 6 | Inventar poses novas |
+| 3 | **Logotipo** | Desenhado, não é fonte: itálico, "A" sem travessão (ponta de seta), cantos agudos + curvas (pág. 9). Variações: horizontal, "PA/RU", monograma empilhado, *lockups* com a cabeça (págs. 10 e 12) | `public/brand/paru-wordmark.svg` + lockup com a cabeça | Escrever "PARU" com fonte, distorcer, aplicar 3D |
+| 4 | **Tipografia** | **Codec Pro** Bold/ExtraBold reta e em caixa alta nos títulos (só o logo é itálico); Fira Code no terminal; Inter no texto (págs. 13–14) | Codec Pro com fallback Outfit (licença pendente — ver §7) | Títulos em itálico, outras famílias |
+| 5 | **Fotos** | Fotos reais do PARU (pág. 10). A pág. 4 ainda pede a "FOTO BOLADA DE PARU EM PÉ FAZENDO ALGO" | Foto da pág. 10 na seção Sobre | Imagens de banco ou de outras pessoas |
+| 6 | **Capas** | — | Arte oficial quando existir; até lá, capa provisória com pose do mascote + textura oficial | Capas com nome de outro artista |
+| 7 | **Agenda** | — | Só datas confirmadas; exemplos neutros marcados como **EXEMPLO** e desligáveis | Datas fictícias em clubs reais |
+| 8 | **Áudio** | — | Pré-escuta só com arquivo real (`previewUrl`) | Loops sintetizados apresentados como faixa |
+| 9 | **Integrações** | — | Google Calendar configurado só por `.env` | Pedir chave de API na interface |
+| 10 | **Press kit** | — | Link real configurável; sem link, "Solicitar press kit" via WhatsApp | Botões que simulam download |
+| 11 | **Elementos-assinatura** | Barra **verde longa + segmento rosa** (págs. 2 e 5); ícone `</>` verde/rosa (pág. 6); fundo binário `1010` com destaque rosa (pág. 7); texturas facetadas verde/rosa (pág. 1); log de terminal da capa | Todos aplicados | Novos ornamentos fora do sistema |
+| 12 | **Textos** | Filosofia, missão, posicionamento, promessa, taglines e manifesto já estão escritos (págs. 4–7) | Textos literais | Parafrasear ou inventar selos/parceiros |
+| 13 | **Contato** | @paruvegan · paru@site.com · +55 11 94723-6278 (pág. 16) | `src/config/site.ts` | Publicar sem confirmar o e-mail ("site.com" parece provisório) |
+| 14 | **Paleta** | `#1A1A1A`, `#12FE07`, `#FF2E88`, `#F9F9F9`, `#000000` (pág. 15) | Tokens em `src/index.css` | Cores fora da paleta |
+
+### Observações sobre o brandbook (para alinhar com o PARU)
+- O sumário cita páginas 14, 21 e 26 ("Colors", "Typography", "Adhibitions"), mas o PDF tem 16 páginas — numeração herdada do template.
+- "ADHIBITIONS" provavelmente deveria ser "APPLICATIONS" (aplicações da marca).
+- O texto fala em "geometria brutalista", mas os desenhos do felino são traço neon arredondado. **O site segue os desenhos.**
+- Mistura de idiomas no log ("FREQUENCY ESTABILIZADA"). Mantido como voz da marca; confirmar se é intencional.
+
+---
+
+## 1. Visão geral & propósito
+
+Plataforma oficial do DJ e produtor **PARU**, posicionando-o como referência de autoridade técnica e vanguarda no Indie Dance e Minimal Deep Tech.
+
+O conceito do site traduz o manifesto do artista:
 **"A máquina dita o pulso, a pista define a frequência. O próximo show está configurado. Vejo vocês no centro do som."**
 
-Para alcançar uma experiência impactante e de alta conversão, unificamos:
-1. **O Brandbook Oficial de PARU**: O arquétipo do *Arquiteto de Sistemas Sonoros*, paleta Cyberpunk Dark Mode (`#1A1A1A`, `#12FE07`, `#FF2E88`), tipografia técnica e o **Mascote Felino em Geometria Brutalista**.
-2. **A Infraestrutura e Autoridade de Martin Garrix** ([martingarrix.com](https://martingarrix.com/)): Stack Next.js moderna, hero cinematográfico e catálogo de lançamentos profissional integrado com plataformas de streaming.
-3. **A Conversão e Funcionalidade de James Hype** ([jameshype.com](https://jameshype.com/)): Fluxo de agenda de shows sem atrito, botão de compra de ingressos em 1 clique e canal direto para contratantes/bookers.
-4. **O Magnetismo e Animação de Peggy Gou** ([peggygou.com](https://www.peggygou.com/)): Identidade marcante com avatar/mascote animado, micro-interações sonoras e estética lúdica/hipnótica.
+Três objetivos, em ordem:
+1. **Reconhecimento de marca** — em 1 segundo o visitante vê o logo, o felino neon e a paleta verde/rosa, exatamente como no brandbook.
+2. **Conversão de booking** — contratante chega ao WhatsApp em no máximo 2 toques, de qualquer seção.
+3. **Música** — ouvir/seguir nas plataformas.
+
+Referências (o que pegamos de cada uma):
+- **Martin Garrix** ([martingarrix.com](https://martingarrix.com/)) — catálogo de lançamentos profissional com metadados e links de streaming.
+- **James Hype** ([jameshype.com](https://jameshype.com/)) — agenda clara, ingresso em 1 clique, booking fácil de achar.
+- **Peggy Gou** ([peggygou.com](https://www.peggygou.com/)) — avatar carismático que acompanha a navegação e torna o site inconfundível.
 
 ---
 
-## 2. Diagnóstico da Identidade Visual (Brandbook PARU)
+## 2. Identidade visual (brandbook PARU)
 
-Analisamos detalhadamente a apresentação oficial de diretrizes de marca (`PARU Brand Guideline Presentation.pdf`):
-
-| Atributo | Diretriz Oficial | Aplicação no Website |
+| Atributo | Diretriz oficial | Aplicação no website |
 | :--- | :--- | :--- |
-| **Arquétipo** | O Criador / Arquiteto | Postura de mistério e autoridade técnica. O site é concebido como um "sistema operacional sonoro" (*PARU CORE v2.0*). |
-| **Paleta de Cores** | Grafite `#1A1A1A`, Verde Terminal `#12FE07`, Rosa Neon `#FF2E88`, Branco `#F9F9F9`, Preto `#000000` | Fundo dark absoluto com iluminação lateral rosa neon (rim light), cartões em grafite chassi e elementos interativos em verde terminal. |
-| **Tipografia** | **Codec Pro** (Títulos/Logo), **Fira Code** (Terminal/Metadados), **Inter** (Textos longos) | Hierarquia clara: títulos pesados e dinâmicos em itálico, status de terminal monoespaçados e leitura confortável no corpo de texto. |
-| **Mascote Oficial** | Felino em Geometria Brutalista | Transformado em elemento interativo vivo no site (olhos neon piscando, pulso sonoro a 128 BPM e reatividade ao cursor). |
-| **Linguagem & Tom** | Confiante, moderna, autêntica, direta ao ponto | Comandos de terminal, indicadores de BPM e métricas técnicas sem rodeios. |
+| **Arquétipo** | O Criador / Arquiteto — mistério e autoridade técnica; "mixagens são upgrades de sistema" (pág. 6) | Interface de "sistema operacional sonoro": prompts `user@paru-sys:~$`, log de boot, status `SYSTEM ONLINE` |
+| **Missão** | Conectar pessoas ao momento presente pela precisão técnica; tecnologia como "resgate humano" (pág. 5) | Texto literal na seção "O arquiteto do sistema" |
+| **Promessa** | "Arquitetura sonora para mentes conectadas." (pág. 4) | Tagline do hero e bloco "Brand promise" |
+| **Taglines** | PARU // SYSTEM. OVERRIDE. · PARU // FREQUÊNCIA CONDUZIDA. · PARU // ARQUITETURA SONORA. | Letreiro rolante após o manifesto + rodapé |
+| **Voz** | Confident · Authentic · Inspiring · Modern — "confiante, moderna e autêntica, com clareza e propósito, evitando formalidades" (pág. 7) | Microtextos curtos, diretos, em formato de comando |
+| **Cores** | Grafite/Chassi `#1A1A1A` · Terminal Green `#12FE07` · Neon (rosa rim light) `#FF2E88` · White `#F9F9F9` · Black `#000000` (pág. 15) | Fundo preto; seções alternadas em grafite; verde = ação principal; rosa = destaque/alerta; branco no manifesto (como a pág. 4) |
+| **Tipografia** | **Codec Pro** (logo e títulos, Heavy/Black, respiro amplo) · **Fira Code** (terminal/metadados) · **Inter** (texto longo) (págs. 13–14) | Títulos Codec Pro ExtraBold caixa alta · BPM, datas, labels e botões em Fira Code · parágrafos em Inter |
+| **Logo** | Wordmark itálico customizado; "A" sem travessão; curvas + cantos agudos (pág. 9–10) | SVG vetorizado do original; nunca redesenhado com fonte |
+| **Mascote** | Felino neon — avatar do sistema (pág. 11) | Ver §3 |
+| **Moodboard** | Máquinas retrô, rave, pista rosa/azul, techwear, estética lúdica (gato meme) (pág. 8) | Texturas facetadas, scanlines sutis, humor no avatar |
 
-### Registros Visuais do Brandbook
+### Registros visuais do brandbook
 | Capa & Logo 3D Glow | Brand Voice & Terminal |
 | :---: | :---: |
 | ![Capa Brandbook](./docs/assets/brand_cover.png) | ![Brand Voice](./docs/assets/brand_voice.png) |
-| **Moodboard (Máquinas & Rave)** | **Mascote: Felino Brutalista** |
+| **Moodboard** | **Mascote: Felino neon** |
 | ![Moodboard](./docs/assets/brand_moodboard.png) | ![Mascote Felino](./docs/assets/brand_mascot.png) |
-| **Tipografia Oficial** | **Paleta de Cores & Gradientes** |
+| **Tipografia oficial** | **Paleta de cores** |
 | ![Tipografia](./docs/assets/brand_typography.png) | ![Cores](./docs/assets/brand_colors.png) |
 
 ---
 
-## 3. Benchmarking das Referências
+## 3. Mascote — especificação fiel
 
-Navegamos e capturamos registros de cada uma das três referências apontadas:
+**Anatomia (não alterar):**
+- Contorno em **traço verde neon `#12FE07`** espesso e arredondado, com brilho (glow). Interior vazio (preto).
+- Cabeça: duas orelhas pontudas, laterais retas e queixo arredondado em "escudo".
+- **Olhos**: dois **quadrados rosa `#FF2E88`** (estética pixel). Não usar círculos nem íris.
+- **Nariz**: pequeno triângulo rosa invertido.
+- **Pulso (ECG)** rosa: abaixo da cabeça (versão ícone) ou no peito (corpo inteiro).
+- **Cauda**: ponta com 2–3 pixels quadrados rosa.
+- Variações de cor oficiais: verde+rosa (padrão), branco, preto (pág. 12).
 
-### 3.1. Referência 1: Martin Garrix (Next.js)
-- **URL**: [martingarrix.com](https://martingarrix.com/)
-- **O que faz com maestria**:
-  - Hero imersivo com tipografia marcante e vídeo de fundo com transição suave.
-  - Grade completa de lançamentos com arte do álbum, data e links para Spotify, Apple Music, Beatport e YouTube.
-  - Carregamento instantâneo via Next.js com zero atraso perceptível de navegação.
-- **Como adaptamos para PARU**: Criaremos uma central de lançamentos com o mesmo rigor profissional e metadados musicais (BPM, tonalidade, gravadora).
+**Poses oficiais (arquivos em `public/brand/`):**
 
-| Martin Garrix Hero | Martin Garrix Releases |
-| :---: | :---: |
-| ![Garrix Hero](./docs/assets/ref_garrix_hero.png) | ![Garrix Releases](./docs/assets/ref_garrix_music.png) |
+| Pose | Arquivo | Onde aparece no site |
+| :--- | :--- | :--- |
+| Cabeça (vetor, interativa) | `paru-cat-head.svg` / componente `CatHead` | Hero, header (lockup), rodapé, favicon |
+| Sentado | `cat-sit.webp` | Seção Booking ("aguardando sua proposta") |
+| 01 Stretch (frente) | `cat-stretch.webp` | Avatar na seção Booking |
+| 02 Pounce (3/4 esq.) | `cat-pounce.webp` | Avatar na seção Música |
+| 03 Rest (3/4 dir.) | `cat-rest.webp` | Avatar na seção Sobre |
+| 04 Prowl (perfil dir.) | `cat-prowl.webp` | Avatar na seção Shows |
 
----
-
-### 3.2. Referência 2: James Hype (Wix - Simples & Funcional)
-- **URL**: [jameshype.com](https://jameshype.com/)
-- **O que faz com maestria**:
-  - Clareza radical: o usuário que entra no site encontra a agenda de shows imediatamente.
-  - Cada data possui link direto para compra de ingressos ou inscrição em lista de espera.
-  - Informações de contato e agenciamento (UK, Americas, Rest of World) extremamente fáceis de localizar para promotores de eventos.
-- **Como adaptamos para PARU**: A seção de agenda de shows de PARU será direta, limpa e de alto contraste, com botões para compra de ingressos e um botão de ação imediata: **"Contratar PARU para seu evento"**.
-
-| James Hype Hero | James Hype Tour Dates | James Hype Bookings |
-| :---: | :---: | :---: |
-| ![James Hype Hero](./docs/assets/ref_jameshype_hero.png) | ![James Hype Tour](./docs/assets/ref_jameshype_tour.png) | ![James Hype Contact](./docs/assets/ref_jameshype_contact.png) |
+**Comportamento (inspirado em Peggy Gou, mas sutil):**
+- Hero: cabeça grande; **olhos quadrados seguem o cursor**, **piscam** a cada 3–6 s, **pulso ECG bate a 128 BPM** (0,469 s).
+- Ao rolar: o felino aparece no canto inferior direito e **troca de pose conforme a seção**, com um pulinho e um balão de terminal curto (ex.: `> LONG SET_LOADED`). Clique abre/fecha o balão; botão para esconder (lembrado no navegador).
+- Celular: avatar menor; balão só abre no toque (não cobre conteúdo).
+- `prefers-reduced-motion`: sem animações.
 
 ---
 
-### 3.3. Referência 3: Peggy Gou (Animação Memorável & Avatar)
-- **URL**: [peggygou.com](https://peggygou.com/)
-- **O que faz com maestria**:
-  - Personificação da marca através de um avatar carismático e marcante que passeia e interage pela interface.
-  - Navegação experimental com física suave, badges dinâmicos e micro-animações.
-  - Gera memorabilidade instantânea: o visitante nunca confunde o site da Peggy Gou com nenhum outro DJ de música eletrônica.
-- **Como adaptamos para PARU**: O **Felino Geométrico Brutalista** de PARU (página 11 do brandbook) será o protagonista interativo, pulsando na frequência de **128 BPM** e reagindo ao movimento do mouse e aos cliques do visitante.
+## 4. Estrutura do site (implementada)
 
-| Peggy Gou Landing & Avatar | Peggy Gou Interactive Music |
-| :---: | :---: |
-| ![Peggy Gou Hero](./docs/assets/ref_peggygou_hero.png) | ![Peggy Gou Music](./docs/assets/ref_peggygou_music.png) |
-
----
-
-## 4. Estrutura Proposta para o Website
-
-O site será estruturado em formato **Single-Page Application cinematográfica com navegação âncora rápida**, garantindo que não haja quebras de carregamento:
+Single page com navegação por âncoras:
 
 ```
-┌────────────────────────────────────────────────────────────────────────┐
-│  [HUD HEADER]  PARU // CORE v2.0   [BPM: 128]   [AUDIO: ON/OFF]   MENU  │
-├────────────────────────────────────────────────────────────────────────┤
-│  01. HERO (System Initialize)                                          │
-│      - Terminal Bootloader animado (> INICIANDO PROTOCOLOS...)         │
-│      - Logo PARU com efeito 3D Glow e silhueta com pink rim light      │
-│      - Tagline: "Arquitetura Sonora Para Mentes Conectadas"            │
-│      - CTAs: [ PRÓXIMOS SHOWS ]  [ ÚLTIMO LANÇAMENTO ]                 │
-├────────────────────────────────────────────────────────────────────────┤
-│  02. AVATAR INTERATIVO (O Felino Brutalista)                           │
-│      - Mascote geométrico reativo ao cursor                            │
-│      - Pulso sonoro na linha de frequência (128 BPM)                   │
-│      - Transição de poses (Prowl / Pounce / Rest)                      │
-├────────────────────────────────────────────────────────────────────────┤
-│  03. FREQUÊNCIAS SONORAS (Músicas & Releases)                          │
-│      - Cyberdeck Player com pré-escuta de 30s                          │
-│      - Grid de faixas com metadados (BPM, Tom, Gravadora)              │
-│      - Links diretos: Spotify, Beatport, Apple Music, Soundcloud       │
-├────────────────────────────────────────────────────────────────────────┤
-│  04. SEQUÊNCIAS AO VIVO (Agenda de Shows)                              │
-│      - Tabela de alto contraste: Data | Cidade | Local | Ingressos     │
-│      - Integração com Bandsintown ou JSON dinâmico                     │
-│      - CTA para Promotores: "Solicitar data / Booking"                 │
-├────────────────────────────────────────────────────────────────────────┤
-│  05. O ARQUITETO (Manifesto & EPK / Press Kit)                         │
-│      - Bio oficial e manifesto do arquétipo                            │
-│      - Galeria com vestuário techwear e fotos oficiais                 │
-│      - Botão de Download direto: [ BAIXAR PRESS KIT COMPLETO (ZIP) ]   │
-├────────────────────────────────────────────────────────────────────────┤
-│  06. TERMINAL DE COMUNICAÇÃO (Get in Touch)                            │
-│      - Formulário de proposta para clubs e festivais                   │
-│      - Contatos oficiais em destaque:                                  │
-│        • WhatsApp Direto (+55 11 94723-6278)                           │
-│        • Email (paru@site.com)                                         │
-│        • Instagram (@paruvegan)                                        │
-├────────────────────────────────────────────────────────────────────────┤
-│  [FOOTER]  Horário de SP (UTC-3) | Binary Grid | Todos os Direitos     │
-└────────────────────────────────────────────────────────────────────────┘
+┌──────────────────────────────────────────────────────────────────────┐
+│ HEADER  [PARU + cabeça]          Música  Shows  Sobre  [CONTRATAR]   │
+├──────────────────────────────────────────────────────────────────────┤
+│ 01 HERO — recriação da capa do brandbook                             │
+│    texturas facetadas verde (sup. esq.) e rosa (inf. dir.)           │
+│    cabeça do felino interativa + logo com glow verde                 │
+│    INDIE DANCE // MINIMAL DEEP TECH                                  │
+│    "ARQUITETURA SONORA PARA MENTES CONECTADAS."                      │
+│    [OUVIR AGORA]  [PRÓXIMOS SHOWS]                                   │
+│    log de boot da capa (login: admin ... [OK]) · SÃO PAULO hh:mm · 128 BPM │
+├──────────────────────────────────────────────────────────────────────┤
+│ 02 BRAND PHILOSOPHY — fundo branco, como a pág. 4                    │
+│    texto literal + destaque "MECÂNICA, HIPNÓTICA..." + promessa/taglines │
+│    letreiro rolante com as 3 taglines                                │
+├──────────────────────────────────────────────────────────────────────┤
+│ 03 FREQUÊNCIAS (música)                                              │
+│    último lançamento em destaque: capa, BPM, tom, gênero, selo, data │
+│    pré-escuta 30 s (se houver MP3) + links Spotify/Beatport/SC/Apple │
+│    grade dos demais lançamentos                                      │
+├──────────────────────────────────────────────────────────────────────┤
+│ 04 PRÓXIMOS SHOWS (fundo grafite)                                    │
+│    DIA grande | cidade/UF | local // evento | [INGRESSOS]            │
+│    estado vazio elegante + banner "Quer PARU no seu line-up?"        │
+├──────────────────────────────────────────────────────────────────────┤
+│ 05 O ARQUITETO DO SISTEMA (sobre / EPK)                              │
+│    foto real + arquétipo + missão + CONFIDENT AUTHENTIC INSPIRING MODERN │
+│    [BAIXAR/SOLICITAR PRESS KIT] [RIDER TÉCNICO]                      │
+├──────────────────────────────────────────────────────────────────────┤
+│ 06 GET IN TOUCH (booking)                                            │
+│    WhatsApp · e-mail (copiar) · Instagram                            │
+│    formulário "booking_terminal.sh" → abre WhatsApp com a proposta   │
+├──────────────────────────────────────────────────────────────────────┤
+│ FOOTER  lockup + manifesto · taglines · redes · "// ACESSO AO LINK NA BIO. //" │
+└──────────────────────────────────────────────────────────────────────┘
+          [avatar felino flutuante — muda de pose por seção]
 ```
 
----
-
-## 5. Arquitetura Tecnológica Recomendada
-
-Recomendamos desenvolver a aplicação utilizando:
-
-1. **Framework Principal**: **Next.js 14/15 (App Router)** com TypeScript.
-   - *Por que não Wix?* O Wix não permite a criação de shaders WebGL personalizados, animações de terminal customizadas e sincronia com a Web Audio API com a mesma fluidez.
-   - O Next.js garante carregamento em milissegundos, SEO impecável para os lançamentos e facilidade de deploy com custo zero de infraestrutura via Vercel ou Cloudflare Pages.
-2. **Estilização**:
-   - **Vanilla CSS com CSS Custom Properties** para os tokens do Brandbook:
-     ```css
-     :root {
-       --color-chassi: #1a1a1a;
-       --color-terminal-green: #12fe07;
-       --color-neon-pink: #ff2e88;
-       --color-white: #f9f9f9;
-       --color-black: #000000;
-       --font-codec: 'Codec Pro', sans-serif;
-       --font-terminal: 'Fira Code', monospace;
-       --font-body: 'Inter', sans-serif;
-     }
-     ```
-3. **Animações & Interatividade**:
-   - **GSAP (GreenSock) + ScrollTrigger**: Para orquestração de transições cinematográficas e revelação de texto.
-   - **Canvas 2D / Three.js**: Para renderizar o Mascote Felino e o espectrograma de áudio.
-   - **Web Audio API**: Para os efeitos sonoros de interface e pré-escuta das músicas.
-4. **Integrações de Terceiros**:
-   - **Bandsintown / Seated**: Para sincronização automática da agenda de shows.
-   - **WhatsApp Business API**: Link direto com mensagem pré-configurada para contratações.
+### Decisões de UX
+- **Booking sempre a 1 clique**: botão verde "Contratar" fixo no header; banner no fim da agenda; WhatsApp como canal principal (é o que contratantes no Brasil usam).
+- **Formulário sem backend**: monta a proposta e abre o WhatsApp já preenchido — zero custo, zero spam, nada se perde.
+- **Honestidade de conteúdo**: nada de datas, faixas ou fotos falsas publicadas como reais. Conteúdo de exemplo aparece com etiqueta **EXEMPLO** e é desligado com uma flag.
+- **Acessibilidade**: contraste AA (cinza de apoio `#A3A3A3` sobre preto = 8,3:1), foco visível verde, link "pular para o conteúdo", `aria-*` nos controles, respeito a movimento reduzido, alvos de toque ≥ 44 px.
+- **Mobile first**: testado em 390 px sem rolagem horizontal; menu em tela cheia com tipografia grande.
+- **Performance**: fontes auto-hospedadas (sem Google Fonts), imagens WebP, sem bibliotecas de animação (CSS puro), JS ~87 kB gzip.
 
 ---
 
-## 6. Cronograma de Implementação Proposto
+## 5. Arquitetura técnica
 
-| Etapa | Foco de Trabalho | Prazo |
+- **Vite 8 + React 19 + TypeScript** (já no repositório). Build estático → deploy grátis em **Vercel**, **Netlify** ou **Cloudflare Pages**.
+  - *Por que não Next.js?* O site é uma página única sem conteúdo dinâmico no servidor; Vite entrega o mesmo resultado com menos complexidade. Migrar só se surgir blog/CMS.
+- **CSS próprio** com tokens do brandbook em `src/index.css` (sem Tailwind).
+- **Dependências**: apenas `react`, `react-dom`, `lucide-react` (ícones).
+- **Onde editar conteúdo** (sem mexer em layout):
+  - `src/config/site.ts` → contatos, redes, press kit, `showDemoContent`.
+  - `src/data/tracks.ts` → lançamentos (capa, BPM, tom, selo, links, `previewUrl`).
+  - `src/data/shows.ts` → agenda.
+  - Opcional: agenda via Google Calendar com `.env` (`VITE_GOOGLE_CALENDAR_ID`, `VITE_GOOGLE_CALENDAR_API_KEY` restrita ao domínio).
+- **Arquivos de marca** extraídos do PDF em `public/brand/` (logo SVG, cabeça SVG, 5 poses, texturas, foto, og-image).
+
+---
+
+## 6. Cronograma
+
+| Etapa | Foco | Status |
 | :---: | :--- | :---: |
-| **1** | **Setup da Arquitetura & Design System**: Configuração Next.js, importação de fontes, paleta e estrutura de navegação. | 2 a 3 dias |
-| **2** | **Hero Cinematográfico & Mascote Interativo**: Animação de bootloader, silhueta com pink rim light e felino brutalista reativo. | 3 a 4 dias |
-| **3** | **Player Cyberdeck & Catálogo de Músicas**: Visualizador de áudio, cards de lançamentos e integração com streaming. | 3 a 4 dias |
-| **4** | **Agenda de Shows & Canal de Booking**: Tabela de shows funcional com links de ingressos e formulário/WhatsApp de contato. | 2 dias |
-| **5** | **EPK & Otimização Mobile**: Download de Press Kit, testes de velocidade (Lighthouse 95+) e responsividade em smartphones. | 2 dias |
+| 1 | Design system fiel (cores, fontes, logo e mascote oficiais) | Feito |
+| 2 | Hero da capa + mascote interativo + avatar por seção | Feito |
+| 3 | Música, agenda, sobre, booking, rodapé; responsivo e acessível | Feito |
+| 4 | Conteúdo real do PARU (lista §7) | Aguardando |
+| 5 | Domínio, deploy, og:image com URL absoluta, Lighthouse 95+ | Depois da etapa 4 |
 
 ---
 
-## 7. Próximos Passos & Perguntas para Alinhamento
+## 7. Pendências para publicar (checklist com o PARU)
 
-Para iniciarmos o desenvolvimento da interface, gostaríamos de confirmar com você e com o PARU:
-
-1. **Domínio e Hospedagem**: Ele já tem um domínio próprio comprado (ex: `parumusic.com`) ou prefere que façamos o deploy inicial em um link provisório da Vercel (ex: `paru-core.vercel.app`) para aprovação?
-2. **Vídeo e Fotos**: PARU já tem fotos oficiais de alta resolução ou vídeos de apresentações recentes para colocarmos no Hero e na galeria?
-3. **Agenda Atual**: Já existem datas confirmadas de shows para os próximos meses que devemos cadastrar de largada?
-4. **Músicas para Pré-Escuta**: Quais são as 2 ou 3 faixas/teasers principais que ele quer destacar no player do site?
-5. **Preferência do Mascote**: O felino interativo deve ser sutil e minimalista (focado no pulso e olhar) ou uma animação mais proeminente e lúdica como na referência de Peggy Gou?
+1. **E-mail de booking real** — `paru@site.com` parece placeholder do brandbook.
+2. **"Foto bolada de PARU em pé"** — a pág. 4 do brandbook ainda pede essa foto. Ideal: 1 vertical (sobre) + 1 horizontal escura com rim light rosa (hero opcional).
+3. **Lançamentos reais**: título, versão, BPM, tom, selo, data, capa (3000×3000) e links. Pré-escuta de 30 s em MP3 é opcional.
+4. **Agenda real** — ou link da agenda Google pública.
+5. **Links**: Spotify, SoundCloud, Beatport, YouTube.
+6. **Press kit (EPK)**: pasta no Drive com fotos em alta, bio PT/EN, rider técnico e mapa de palco.
+7. **Licença web da Codec Pro** (Zetafonts) — a licença do Canva não cobre site. Enquanto isso, o site usa Outfit (visual muito próximo). Instruções em `public/fonts/LEIA-ME.txt`.
+8. **Domínio** (ex.: `parumusic.com.br`) — depois disso, trocar `og:image` para URL absoluta no `index.html`.
+9. Mudar `showDemoContent` para `false` em `src/config/site.ts`.
 
 ---
-*Documento preparado com base nos materiais oficiais de PARU e análise aprofundada dos benchmarks Martin Garrix, James Hype e Peggy Gou.*
+*Plano baseado no `PARU Brand Guideline Presentation.pdf` e na análise dos benchmarks Martin Garrix, James Hype e Peggy Gou.*

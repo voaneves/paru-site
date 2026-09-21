@@ -1,148 +1,88 @@
-import React, { useState, useEffect } from 'react';
-import { Play, Calendar, Terminal, ChevronDown, Sparkles } from 'lucide-react';
-import { ParuLogo } from './ParuLogo';
-import { InteractiveMascot } from './InteractiveMascot';
-import { soundEngine } from '../services/audioEngine';
+import { useEffect, useState } from 'react';
+import { ArrowDown, Play } from 'lucide-react';
+import { BrandBar, CatHead, Wordmark } from './Brand';
+import { SITE } from '../config/site';
+import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion';
 
-export const Hero: React.FC = () => {
-  const [terminalLines, setTerminalLines] = useState<string[]>([]);
-  const [bootDone, setBootDone] = useState(false);
+// Texto exato da capa do brandbook (pág. 1)
+const BOOT = [
+  'login: admin',
+  'password: ••••••••••••',
+  '> AUTHENTICATION SUCCESSFUL',
+  '> INICIANDO SISTEMA_PARU_CORE_v2.0...',
+  '> CARREGANDO PROTOCOLOS DE IDENTIDADE... [OK]',
+  '> RENDERIZANDO INTERFACE EM DARK_MODE... [OK]',
+];
 
-  const fullLogs = [
-    '> INICIANDO SISTEMA_PARU_CORE_v2.0...',
-    '> CARREGANDO PROTOCOLOS DE IDENTIDADE... [OK]',
-    '> RENDERIZANDO INTERFACE EM DARK_MODE... [OK]',
-    '> FREQUÊNCIA ESTABILIZADA EM 128 BPM [OK]',
-    '> ARQUITETURA SONORA PRONTA PARA DISPARO.',
-  ];
+export function Hero() {
+  const reduced = usePrefersReducedMotion();
+  const [lines, setLines] = useState(reduced ? BOOT.length : 0);
+  const [time, setTime] = useState('');
 
   useEffect(() => {
-    let currentIdx = 0;
-    const interval = setInterval(() => {
-      if (currentIdx < fullLogs.length) {
-        setTerminalLines((prev) => [...prev, fullLogs[currentIdx]]);
-        currentIdx++;
-      } else {
-        setBootDone(true);
-        clearInterval(interval);
-      }
-    }, 450);
+    if (reduced) return;
+    const t = window.setInterval(() => setLines((n) => (n >= BOOT.length ? n : n + 1)), 380);
+    return () => window.clearInterval(t);
+  }, [reduced]);
 
-    return () => clearInterval(interval);
+  useEffect(() => {
+    const fmt = new Intl.DateTimeFormat('pt-BR', { timeZone: 'America/Sao_Paulo', hour: '2-digit', minute: '2-digit' });
+    const tick = () => setTime(fmt.format(new Date()));
+    tick();
+    const t = window.setInterval(tick, 15000);
+    return () => window.clearInterval(t);
   }, []);
 
-  const handleListenNow = () => {
-    soundEngine.playTrack('track-1', 128);
-    const element = document.getElementById('releases');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
-    <section className="relative min-h-screen flex flex-col justify-between pt-24 pb-12 px-4 sm:px-6 overflow-hidden bg-black">
-      {/* Background Image with Dark Vignette & Laser Accents */}
-      <div className="absolute inset-0 z-0">
-        <img
-          src="./assets/hero_stage.jpg"
-          alt="PARU Live Stage Atmosphere"
-          className="w-full h-full object-cover opacity-35 filter brightness-90 contrast-125 scale-105 transition-transform duration-1000"
-        />
-        {/* Gradients to blend into black */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/80" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black" />
-
-        {/* Ambient laser glow spots */}
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#12FE07]/10 rounded-full blur-[140px] pointer-events-none" />
-        <div className="absolute bottom-1/3 right-1/4 w-96 h-96 bg-[#FF2E88]/10 rounded-full blur-[140px] pointer-events-none" />
-
-        {/* Scanline CRT lines */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(18,254,7,0.02)_50%,rgba(0,0,0,0.4)_50%)] bg-[length:100%_4px] pointer-events-none" />
+    <section id="topo" className="hero" aria-labelledby="hero-title">
+      <div className="hero__bg" aria-hidden="true">
+        <div className="hero__texture hero__texture--green" />
+        <div className="hero__texture hero__texture--pink" />
+        <div className="hero__scan" />
       </div>
 
-      {/* Top: Terminal Bootloader Box */}
-      <div className="relative z-10 max-w-4xl mx-auto w-full pt-4">
-        <div className="rounded-lg bg-black/75 border border-[#1A1A1A] p-3 sm:p-4 backdrop-blur-md shadow-[0_4px_25px_rgba(0,0,0,0.8)]">
-          <div className="flex items-center justify-between border-b border-[#222222] pb-2 mb-2 text-[10px] font-mono text-[#888888]">
-            <div className="flex items-center gap-2">
-              <Terminal className="w-3.5 h-3.5 text-[#12FE07]" />
-              <span>user@paru-sys:~$ cat boot.log</span>
-            </div>
-            <span className="text-[#12FE07] flex items-center gap-1">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#12FE07] animate-ping" />
-              ONLINE
-            </span>
-          </div>
-
-          <div className="font-mono text-xs space-y-1 text-[#12FE07]/90 min-h-[55px]">
-            {terminalLines.map((line, i) => (
-              <div key={i} className="flex items-center gap-2">
-                <span className="opacity-80">{line}</span>
-              </div>
-            ))}
-            {!bootDone && (
-              <span className="inline-block w-2 h-3.5 bg-[#12FE07] animate-pulse align-middle ml-1" />
-            )}
-          </div>
-        </div>
-      </div>
-
-      {/* Center: Main Brand Impact & Interactive Mascot */}
-      <div className="relative z-10 max-w-5xl mx-auto w-full text-center my-auto py-8 sm:py-12 flex flex-col items-center">
-        {/* Interactive Feline Mascot Header Position */}
-        <div className="mb-4 transform hover:scale-105 transition-transform duration-300">
-          <InteractiveMascot size={150} />
-        </div>
-
-        {/* Brand Tagline */}
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#141414] border border-[#2A2A2A] text-xs sm:text-sm font-mono tracking-widest text-[#FF2E88] uppercase mb-4 shadow-[0_0_15px_rgba(255,46,136,0.2)]">
-          <Sparkles className="w-3.5 h-3.5" />
-          <span>ARQUITETURA SONORA PARA MENTES CONECTADAS</span>
-        </div>
-
-        {/* Gigantic Paru Logo */}
-        <h1 className="sr-only">PARU // DJ & Sound Architect</h1>
-        <div className="py-2">
-          <ParuLogo size="hero" showGlow={true} />
-        </div>
-
-        {/* Secondary Manifesto Line */}
-        <p className="max-w-2xl text-sm sm:text-lg font-mono text-[#CCCCCC] mt-4 tracking-wide leading-relaxed px-4">
-          <span className="text-[#12FE07] font-bold">Mecânica, hipnótica</span> e conduzida com{' '}
-          <span className="text-[#FF2E88] font-bold">precisão cirúrgica</span>. O próximo show está configurado.
+      <div className="hero__center">
+        <CatHead interactive className="hero__cat" label="Mascote PARU — o felino, avatar do sistema" />
+        <h1 id="hero-title" className="hero__title">
+          <Wordmark className="hero__wordmark" title="PARU" />
+        </h1>
+        <p className="hero__genres mono">
+          <span className="green">INDIE DANCE</span> <span className="dim">//</span> <span className="pink">MINIMAL DEEP TECH</span>
         </p>
-
-        {/* CTA Buttons */}
-        <div className="flex flex-wrap items-center justify-center gap-4 mt-8">
-          <button
-            onClick={handleListenNow}
-            className="px-7 py-3.5 rounded-xl bg-[#12FE07] hover:bg-[#0fdc04] text-black font-extrabold font-mono text-xs sm:text-sm tracking-wider flex items-center gap-2.5 shadow-[0_0_25px_rgba(18,254,7,0.45)] transition-all transform hover:scale-105 active:scale-95 cursor-pointer"
-          >
-            <Play className="w-4 h-4 fill-black" />
-            <span>OUVIR ÚLTIMO LANÇAMENTO</span>
-          </button>
-
-          <a
-            href="#tour"
-            className="px-7 py-3.5 rounded-xl bg-[#141414] hover:bg-[#1F1F1F] text-[#F9F9F9] font-mono text-xs sm:text-sm tracking-wider border border-[#2A2A2A] hover:border-[#12FE07] flex items-center gap-2.5 transition-all shadow-[0_5px_20px_rgba(0,0,0,0.6)] cursor-pointer"
-          >
-            <Calendar className="w-4 h-4 text-[#FF2E88]" />
-            <span>PRÓXIMAS DATAS / SHOWS</span>
+        <p className="hero__promise">{SITE.promise}</p>
+        <div className="hero__cta">
+          <a href="#musica" className="btn btn--primary">
+            <Play size={16} fill="currentColor" /> Ouvir agora
+          </a>
+          <a href="#shows" className="btn btn--ghost">
+            Próximos shows
           </a>
         </div>
       </div>
 
-      {/* Bottom Scroll Cue */}
-      <div className="relative z-10 flex flex-col items-center justify-center pt-4">
-        <a
-          href="#releases"
-          className="flex flex-col items-center gap-1 font-mono text-[10px] text-[#777777] hover:text-[#12FE07] transition-colors"
-          aria-label="Rolar para discografia"
-        >
-          <span>EXPLORAR SISTEMA</span>
-          <ChevronDown className="w-4 h-4 animate-bounce text-[#12FE07]" />
+      <div className="hero__foot container">
+        <pre className="hero__boot mono" aria-label="Sistema PARU iniciado">
+          {BOOT.slice(0, lines).join('\n')}
+          {lines < BOOT.length && <span className="caret" />}
+          {lines >= BOOT.length && (
+            <>
+              {'\n'}
+              <span className="dim">user@paru-sys:~$</span> <span className="caret" />
+            </>
+          )}
+        </pre>
+        <div className="hero__status mono">
+          <span>
+            <i className="dot" /> SYSTEM ONLINE
+          </span>
+          <span>SÃO PAULO {time}</span>
+          <span className="green">{SITE.bpm} BPM</span>
+        </div>
+        <a href="#manifesto" className="hero__scroll" aria-label="Rolar para o manifesto">
+          <ArrowDown size={18} />
         </a>
       </div>
+      <BrandBar className="hero__bar" />
     </section>
   );
-};
+}
