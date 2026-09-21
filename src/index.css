@@ -1477,6 +1477,15 @@ ol {
   border-top: 1px solid var(--line);
   color: var(--text-dim);
 }
+.credit a {
+  color: var(--white);
+  border-bottom: 1px solid var(--line-strong);
+  transition: color 0.2s, border-color 0.2s;
+}
+.credit a:hover {
+  color: var(--green);
+  border-color: var(--green);
+}
 .to-top {
   display: inline-flex;
   align-items: center;

@@ -1,5 +1,6 @@
 /**
  * PARU // CONFIGURAÇÃO CENTRAL DO SITE
+ * Site criado por Victor Neves — https://voaneves.com
  * ------------------------------------------------------------
  * Tudo que é "dado do artista" mora aqui. Trocou o e-mail,
  * o link do Spotify ou o press kit? Edite só este arquivo.
@@ -45,6 +46,13 @@ export const SITE = {
   },
 
   pressKitUrl: '', // ex.: link do Google Drive com fotos, rider e bio (PT/EN)
+
+  // Criador do site (crédito no rodapé e nos metadados)
+  credits: {
+    name: 'Victor Neves',
+    url: 'https://voaneves.com',
+    github: 'https://github.com/voaneves',
+  },
 
   /** Mostra lançamentos e datas de EXEMPLO (marcados como tal). Desligar antes de publicar. */
   showDemoContent: true,

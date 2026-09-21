@@ -1,0 +1,12 @@
+/* TEAM */
+Criação, design e desenvolvimento: Victor Neves
+Site: https://voaneves.com
+GitHub: https://github.com/voaneves
+Local: Brasil
+
+/* ARTISTA */
+PARU (Paulo Victor) — DJ & produtor · Instagram: @paruvegan
+
+/* SITE */
+Stack: Vite, React, TypeScript
+Fontes: Codec Pro, Fira Code, Inter, Outfit

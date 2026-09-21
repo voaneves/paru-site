@@ -1,6 +1,7 @@
 # PARU // Arquitetura Sonora — Plano Mestre do Website
 
 > **Status**: em desenvolvimento
+> **Autor do projeto**: Victor Neves — [voaneves.com](https://voaneves.com) · [github.com/voaneves](https://github.com/voaneves)
 > **Artista**: Paulo Victor (PARU) — DJ & produtor musical
 > **Gênero**: Indie Dance & Minimal Deep Tech
 > **Fonte de verdade**: `PARU Brand Guideline Presentation.pdf` (16 páginas, Canva, set/2026)
@@ -10,7 +11,7 @@
 
 ## 0. Regras de fidelidade à marca
 
-Checklist usado para garantir que cada elemento do site segue o brandbook. Vale para qualquer peça nova.
+Checklist que defini para garantir que cada elemento do site segue o brandbook. Vale para qualquer peça nova.
 
 | # | Item | Diretriz do brandbook | Como o site aplica | Evitar |
 | :-: | :--- | :--- | :--- | :--- |
@@ -204,4 +205,4 @@ Single page com navegação por âncoras:
 9. Mudar `showDemoContent` para `false` em `src/config/site.ts`.
 
 ---
-*Plano baseado no `PARU Brand Guideline Presentation.pdf` e na análise dos benchmarks Martin Garrix, James Hype e Peggy Gou.*
+*Plano elaborado por Victor Neves a partir do `PARU Brand Guideline Presentation.pdf` e da análise dos benchmarks Martin Garrix, James Hype e Peggy Gou.*

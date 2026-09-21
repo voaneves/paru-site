@@ -37,7 +37,16 @@ export function Footer() {
       </div>
       <div className="container site-footer__bottom mono">
         <span>© {new Date().getFullYear()} PARU. Todos os direitos reservados.</span>
-        <span className="dim">&gt; // ACESSO AO LINK NA BIO. //</span>
+        <span className="credit">
+          Site por{' '}
+          <a href={SITE.credits.url} target="_blank" rel="author noreferrer">
+            {SITE.credits.name}
+          </a>
+          <span className="dim"> · </span>
+          <a href={SITE.credits.github} target="_blank" rel="noreferrer">
+            github.com/voaneves
+          </a>
+        </span>
         <a href="#topo" className="to-top">
           Topo <ArrowUp size={14} />
         </a>
