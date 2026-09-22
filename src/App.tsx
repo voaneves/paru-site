@@ -1,10 +1,10 @@
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
-import { Manifesto } from './components/Manifesto';
 import { MusicSection } from './components/MusicSection';
+import { VideosSection } from './components/VideosSection';
 import { ShowsSection } from './components/ShowsSection';
-import { AboutSection } from './components/AboutSection';
-import { BookingSection } from './components/BookingSection';
+import { InfoSection } from './components/InfoSection';
+import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { MascotCompanion } from './components/MascotCompanion';
 import { MobileTabBar } from './components/MobileTabBar';
@@ -19,11 +19,11 @@ export default function App() {
       <Header active={active} />
       <main id="conteudo">
         <Hero />
-        <Manifesto />
         <MusicSection />
+        <VideosSection />
         <ShowsSection />
-        <AboutSection />
-        <BookingSection />
+        <InfoSection />
+        <ContactSection />
       </main>
       <Footer />
       <SectionRail active={active} />

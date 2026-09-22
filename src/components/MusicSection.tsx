@@ -61,7 +61,7 @@ export function MusicSection() {
       <section id="musica" className="section" aria-labelledby="musica-title">
         <div className="container">
           <SectionHead
-          section="musica" id="musica-title" cmd="ls ./frequencias" title="Frequências" lead="Novos lançamentos em compilação. Siga PARU para ser o primeiro a ouvir." />
+          section="musica" id="musica-title" cmd="ls ./tracks" title="Música" lead="Novos lançamentos em breve." />
         </div>
       </section>
     );
@@ -75,10 +75,10 @@ export function MusicSection() {
         <SectionHead
           section="musica"
           id="musica-title"
-          cmd="ls ./frequencias"
+          cmd="ls ./tracks"
           tag={hasDemo ? <DemoTag /> : undefined}
-          title="Frequências"
-          lead="Indie Dance e Minimal Deep Tech compilados com precisão cirúrgica."
+          title="Música"
+          lead="Tracks lançadas."
         />
 
         <article className="featured">

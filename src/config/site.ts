@@ -8,7 +8,8 @@
  * ANTES DE PUBLICAR:
  *  - `email`: "paru@site.com" é o texto do brandbook e parece placeholder. Confirmar o real.
  *  - `links`: preencher com os perfis reais (deixe '' para esconder o botão).
- *  - `pressKitUrl`: link do Drive/Dropbox com o EPK (deixe '' para mostrar "em breve").
+ *  - `pressKitUrl` / `mediaKitUrl`: links (deixe '' para mostrar "em breve").
+ *  - `bio`: texto da seção Info.
  *  - `showDemoContent`: mude para `false` quando houver lançamentos/datas reais.
  */
 
@@ -19,7 +20,7 @@ export const SITE = {
   bpm: 128,
 
   // Brandbook — Brand Promise & Taglines (pág. 4)
-  promise: 'Arquitetura sonora para mentes conectadas.',
+  promise: 'Arquitetura sonora para mentes conectadas',
   taglines: [
     'PARU // SYSTEM. OVERRIDE.',
     'PARU // FREQUÊNCIA CONDUZIDA.',
@@ -42,10 +43,16 @@ export const SITE = {
     soundcloud: '', // ex.: 'https://soundcloud.com/...'
     spotify: '', // ex.: 'https://open.spotify.com/artist/...'
     beatport: '',
-    youtube: '',
+    youtube: '', // canal do YouTube (aparece na seção Vídeos)
   },
 
-  pressKitUrl: '', // ex.: link do Google Drive com fotos, rider e bio (PT/EN)
+  // Seção Info — texto enviado pelo PARU (um item por parágrafo)
+  bio: [
+    'PARU é DJ e produtor de Indie Dance e Minimal Deep Tech.', // TODO: substituir pelo texto oficial
+  ],
+
+  pressKitUrl: '', // site/link do press kit
+  mediaKitUrl: '', // link do mídia kit
 
   // Criador do site (crédito no rodapé e nos metadados)
   credits: {

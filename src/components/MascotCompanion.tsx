@@ -10,10 +10,11 @@ import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion';
 const BY_SECTION: Record<string, { pose: CatPose; lines: string[] }> = {
   musica: { pose: 'pounce', lines: ['> NÃO REAGIMOS À PISTA. NÓS A PROGRAMAMOS.', '> FREQUÊNCIA ESTABILIZADA EM 128 BPM'] },
   shows: { pose: 'prowl', lines: ['> INITIATING SEQUENCE...', '> LONG SET_LOADED'] },
-  arquiteto: { pose: 'rest', lines: ['> MODO CONTEMPLATIVO.', '> AVATAR DO SISTEMA EM REPOUSO.'] },
-  booking: { pose: 'stretch', lines: ['> SISTEMA PRONTO PARA O REBOOT.', '> BORA MARCAR ESSA DATA?'] },
+  videos: { pose: 'sit', lines: ['> REPRODUZINDO...', '> SENTA QUE LÁ VEM SET.'] },
+  info: { pose: 'rest', lines: ['> MODO CONTEMPLATIVO.', '> AVATAR DO SISTEMA EM REPOUSO.'] },
+  contato: { pose: 'stretch', lines: ['> CANAL ABERTO.', '> MANDA SUA MENSAGEM.'] },
 };
-const POSES: CatPose[] = ['pounce', 'prowl', 'rest', 'stretch'];
+const POSES: CatPose[] = ['pounce', 'sit', 'prowl', 'rest', 'stretch'];
 const KEY = 'paru.mascot.hidden';
 
 export function MascotCompanion({ section }: { section: string }) {
@@ -57,7 +58,7 @@ export function MascotCompanion({ section }: { section: string }) {
     }
   };
 
-  if (!conf) return null; // no hero a cabeça já está em destaque; no manifesto (fundo branco) o neon não funciona
+  if (!conf) return null; // no hero a cabeça já está em destaque
   if (hidden)
     return (
       <button className="mascot-restore" onClick={show} aria-label="Mostrar o mascote">

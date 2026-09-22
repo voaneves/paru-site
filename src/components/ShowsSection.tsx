@@ -113,7 +113,7 @@ export function ShowsSection() {
             <p className="book-cta__title">Quer PARU no seu line-up?</p>
           </div>
           <div className="book-cta__actions">
-            <a className="btn btn--primary" href="#booking">
+            <a className="btn btn--primary" href="#contato">
               <Send size={16} aria-hidden="true" /> Solicitar data
             </a>
             <a className="btn btn--ghost" href={whatsappLink('Olá! Quero consultar disponibilidade de data para o PARU.')} target="_blank" rel="noreferrer">

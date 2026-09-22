@@ -16,8 +16,8 @@ export function Header({ active }: { active: string }) {
     return () => window.removeEventListener('scroll', on);
   }, []);
 
-  const links = NAV.filter((n) => n.id !== 'booking');
-  const bookingActive = active === 'booking';
+  const links = NAV.filter((n) => n.id !== 'contato');
+  const bookingActive = active === 'contato';
 
   return (
     <header className={`site-header ${scrolled ? 'is-scrolled' : ''}`}>
@@ -37,8 +37,8 @@ export function Header({ active }: { active: string }) {
               {label}
             </a>
           ))}
-          <a href="#booking" className={`btn btn--primary btn--sm ${bookingActive ? 'is-active' : ''}`} aria-current={bookingActive ? 'location' : undefined}>
-            <Send size={14} aria-hidden="true" /> Contratar
+          <a href="#contato" className={`btn btn--primary btn--sm ${bookingActive ? 'is-active' : ''}`} aria-current={bookingActive ? 'location' : undefined}>
+            <Send size={14} aria-hidden="true" /> Contato
           </a>
         </nav>
 

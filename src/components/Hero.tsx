@@ -49,9 +49,6 @@ export function Hero() {
         <h1 id="hero-title" className="hero__title">
           <Wordmark className="hero__wordmark" title="PARU" />
         </h1>
-        <p className="hero__genres mono">
-          <span className="green">INDIE DANCE</span> <span className="dim">//</span> <span className="pink">MINIMAL DEEP TECH</span>
-        </p>
         <p className="hero__promise">{SITE.promise}</p>
         <div className="hero__cta">
           <a href="#musica" className="btn btn--primary">
@@ -81,7 +78,7 @@ export function Hero() {
           <span>SÃO PAULO {time}</span>
           <span className="green">{SITE.bpm} BPM</span>
         </div>
-        <a href="#manifesto" className="hero__scroll" aria-label="Rolar para o manifesto">
+        <a href="#musica" className="hero__scroll" aria-label="Rolar para Música">
           <ArrowDown size={18} />
         </a>
       </div>

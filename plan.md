@@ -189,6 +189,7 @@ Single page com navegação por âncoras:
 | 3 | Música, agenda, sobre, booking, rodapé; responsivo e acessível | Feito |
 | 3.1 | Navegação e ícones (§8) | Feito |
 | 3.2 | Performance, acessibilidade e SEO (§9) | Feito |
+| 3.3 | Reestruturação de conteúdo (§10) | Feito — aguardando textos e links |
 | 4 | Conteúdo real do PARU (lista §7) | Aguardando |
 | 5 | Domínio, deploy, og:image com URL absoluta, Lighthouse 95+ | Depois da etapa 4 |
 
@@ -256,6 +257,22 @@ Auditoria com Lighthouse (celular com 4G simulado e desktop) e axe-core (WCAG 2.
 - **Acessibilidade**: ícones decorativos do mascote ocultos para leitores de tela; fundo binário decorativo fora da árvore de leitura; verde do manifesto no fundo branco escurecido para 4,5:1; título "Brand Philosophy" com contorno escuro fino.
 
 **Observação**: no GitHub Pages de projeto, o `robots.txt` fica em `/paru-site/robots.txt` e não na raiz do domínio. Com domínio próprio ele passa a valer automaticamente; até lá, enviar o `sitemap.xml` pelo Google Search Console.
+
+## 10. Reestruturação de conteúdo (v1.3)
+
+O brandbook passa a ser **referência visual** para um site coeso, não conteúdo a ser reproduzido.
+
+| Antes | Agora |
+| :--- | :--- |
+| Hero com "INDIE DANCE // MINIMAL DEEP TECH" + promessa em caixa alta | Só o slogan: *Arquitetura sonora para mentes conectadas* |
+| Seção "Brand Philosophy" (texto do brandbook) + letreiro de taglines | Removida |
+| "Frequências" | **Música** — tracks lançadas |
+| — | **Vídeos** — links do YouTube (`src/data/videos.ts`), player carregado só no clique |
+| "O arquiteto do sistema" (textos do brandbook) | **Info** — texto e redes enviados pelo PARU (`SITE.bio`, `SITE.links`) |
+| Press kit em destaque + Rider técnico | **Press kit** e **Mídia kit** em botões pretos, discretos (`pressKitUrl`, `mediaKitUrl`) |
+| Formulário de proposta (tipo, cidade, data) via WhatsApp | **Contato** — formulário simples (nome, e-mail, mensagem) que abre o e-mail do visitante |
+
+Navegação: Música · Vídeos · Shows · Info · Contato.
 
 ---
 *Plano elaborado por Victor Neves a partir do `PARU Brand Guideline Presentation.pdf` e da análise dos benchmarks Martin Garrix, James Hype e Peggy Gou.*
