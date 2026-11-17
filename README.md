@@ -6,6 +6,13 @@ Site oficial do DJ e produtor **PARU**, criado e desenvolvido por **[Victor Neve
 
 Vite + React + TypeScript, fiel ao **PARU Brand Guideline** (ver `plan.md`).
 
+**[Ver o site ao vivo](https://voaneves.github.io/paru-site/)**
+
+<p align="center">
+  <a href="https://voaneves.github.io/paru-site/"><img src="docs/img/paru-desktop.jpg" alt="Página inicial do site do PARU no desktop: logotipo verde neon sobre fundo escuro, o lema 'Arquitetura sonora para mentes conectadas' e os botões Ouvir agora e Próximos shows" width="720"></a>
+  <a href="https://voaneves.github.io/paru-site/"><img src="docs/img/paru-mobile.jpg" alt="Página inicial do site do PARU no celular, com logotipo, lema, botões de ação e menu inferior" width="200"></a>
+</p>
+
 ## Rodar
 
 ```bash
