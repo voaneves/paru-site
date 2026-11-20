@@ -76,7 +76,7 @@
 
   /* Derivados funcionais (apenas tons neutros do grafite) */
   --line: #2b2b2b;
-  --line-strong: #3a3a3a;
+  --line-strong: #666666;
   --text-dim: #a3a3a3; /* 8.3:1 sobre preto */
   --green-glow: rgba(18, 254, 7, 0.45);
   --pink-glow: rgba(255, 46, 136, 0.45);
