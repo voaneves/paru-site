@@ -1,0 +1,91 @@
+{
+  "$schema": "https://raw.githubusercontent.com/voaneves/dtcg-contrast/main/dtcg-contrast.schema.json",
+  "tokens": [
+    "./tokens.json"
+  ],
+  "themes": [
+    {
+      "name": "dark"
+    }
+  ],
+  "pairs": [
+    {
+      "fg": "white",
+      "bg": "black",
+      "level": "AA",
+      "name": "body text on black"
+    },
+    {
+      "fg": "white",
+      "bg": "chassi",
+      "level": "AA",
+      "name": "body text on chassi panel"
+    },
+    {
+      "fg": "textDim",
+      "bg": "black",
+      "level": "AA",
+      "name": "muted text on black"
+    },
+    {
+      "fg": "textDim",
+      "bg": "chassi",
+      "level": "AA",
+      "name": "muted text on chassi panel"
+    },
+    {
+      "fg": "green",
+      "bg": "black",
+      "level": "AA",
+      "name": "green text/link on black"
+    },
+    {
+      "fg": "green",
+      "bg": "chassi",
+      "level": "AA",
+      "name": "green text on chassi"
+    },
+    {
+      "fg": "pink",
+      "bg": "black",
+      "level": "AA",
+      "name": "pink text on black"
+    },
+    {
+      "fg": "pink",
+      "bg": "chassi",
+      "level": "AA",
+      "name": "pink text on chassi"
+    },
+    {
+      "fg": "black",
+      "bg": "green",
+      "level": "AA",
+      "name": "primary button text on green fill"
+    },
+    {
+      "fg": "black",
+      "bg": "pink",
+      "level": "AA",
+      "name": "pink button text on fill"
+    },
+    {
+      "fg": "green",
+      "bg": "black",
+      "level": "UI",
+      "name": "focus ring on black"
+    },
+    {
+      "fg": "lineStrong",
+      "bg": "black",
+      "level": "UI",
+      "name": "input / ghost button border on black"
+    },
+    {
+      "fg": "lineStrong",
+      "bg": "chassi",
+      "level": "UI",
+      "name": "border on chassi panel"
+    }
+  ]
+}
