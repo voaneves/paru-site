@@ -1,0 +1,48 @@
+{
+  "repo": "paru-site",
+  "branch": "main",
+  "lang": "pt-BR",
+  "license": "MIT",
+  "name": "PARU — Arquitetura Sonora",
+  "tagline": "Site oficial do DJ e produtor de Indie Dance e Minimal Deep Tech.",
+  "description": "Site oficial do DJ e produtor PARU com React 19, TypeScript 6, Vite 8 e pré-renderização SSR.",
+  "logo": {
+    "existing": "public/brand/paru-cat-head.svg"
+  },
+  "buttons": [
+    {
+      "id": "live",
+      "text": "Acessar o site",
+      "kind": "primary",
+      "font": "sans",
+      "href": "https://voaneves.github.io/paru-site/",
+      "landing": false
+    },
+    {
+      "id": "run",
+      "text": "Rodar localmente",
+      "kind": "secondary",
+      "font": "sans",
+      "href": "https://github.com/voaneves/paru-site#edicao-e-execucao",
+      "landing": false
+    },
+    {
+      "id": "hire",
+      "text": "Vamos conversar",
+      "kind": "primary",
+      "font": "sans",
+      "href": "https://voaneves.com/#contato",
+      "landing": false
+    },
+    {
+      "id": "site",
+      "text": "voaneves.com",
+      "kind": "secondary",
+      "font": "sans",
+      "href": "https://voaneves.com/",
+      "landing": false
+    }
+  ],
+  "landing": false,
+  "live_url": "https://voaneves.github.io/paru-site/"
+}

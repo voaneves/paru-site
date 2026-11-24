@@ -3,7 +3,7 @@
 <div align="center">
 
 <a href="https://voaneves.github.io/paru-site/">
-  <img alt="Mascote PARU — cabeça em traço neon verde e rosa" src="https://raw.githubusercontent.com/voaneves/paru-site/main/public/brand/paru-cat-head.svg" width="96" />
+  <img alt="Mascote PARU — cabeça em traço neon verde e rosa" src="https://raw.githubusercontent.com/voaneves/paru-site/main/public/brand/paru-cat-head.svg" width="112" height="112" />
 </a>
 
 <h1>PARU — Arquitetura Sonora</h1>
@@ -14,6 +14,11 @@
     React 19, TypeScript 6 e Vite 8 com pré-renderização SSR fiel ao PARU Brand Guideline —
     <kbd>React 19</kbd> · <kbd>Vite 8</kbd> · <kbd>SSR Prerender</kbd> · <kbd>Oxlint</kbd>
   </sub>
+</p>
+
+<p>
+  <a href="https://voaneves.github.io/paru-site/"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/voaneves/paru-site/main/assets/buttons/live-dark.svg" /><img alt="Acessar o site" src="https://raw.githubusercontent.com/voaneves/paru-site/main/assets/buttons/live-light.svg" height="40" /></picture></a>
+  <a href="#edicao-e-execucao"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/voaneves/paru-site/main/assets/buttons/run-dark.svg" /><img alt="Rodar localmente" src="https://raw.githubusercontent.com/voaneves/paru-site/main/assets/buttons/run-light.svg" height="40" /></picture></a>
 </p>
 
 <p><sub>Precisa de um site autoral assim? <a href="https://voaneves.com/#contato"><strong>Vamos conversar →</strong></a></sub></p>
@@ -145,11 +150,11 @@ VITE_GOOGLE_CALENDAR_API_KEY=AIza...
 - **Fontes:** `Fira Code`, `Inter` e `Outfit` (SIL OFL); `Codec Pro` comercial em `src/fonts/` (ver [`public/fonts/LEIA-ME.txt`](./public/fonts/LEIA-ME.txt)).
 
 <p>
-  <a href="https://voaneves.com/#contato"><strong>Vamos conversar →</strong></a> ·
-  <a href="https://voaneves.com/"><strong>voaneves.com</strong></a> ·
-  <a href="https://www.linkedin.com/in/voaneves/">LinkedIn</a> ·
-  <a href="mailto:victorneves478@gmail.com">E-mail</a>
+  <a href="https://voaneves.com/#contato"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/voaneves/paru-site/main/assets/buttons/hire-dark.svg" /><img alt="Vamos conversar" src="https://raw.githubusercontent.com/voaneves/paru-site/main/assets/buttons/hire-light.svg" height="40" /></picture></a>
+  <a href="https://voaneves.com/"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/voaneves/paru-site/main/assets/buttons/site-dark.svg" /><img alt="voaneves.com" src="https://raw.githubusercontent.com/voaneves/paru-site/main/assets/buttons/site-light.svg" height="40" /></picture></a>
 </p>
+
+<a href="https://www.linkedin.com/in/voaneves/">LinkedIn</a> · <a href="mailto:victorneves478@gmail.com">E-mail</a>
 
 <div align="center">
   <img alt="VOANEVES mark" src="https://raw.githubusercontent.com/voaneves/paru-site/main/assets/brand/mark-duo.svg" width="32" height="32" />
