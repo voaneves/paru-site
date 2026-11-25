@@ -30,16 +30,6 @@
   <a href="./LICENSE"><img src="https://img.shields.io/badge/código-MIT-0A0A0A?style=flat-square" alt="Licença MIT" /></a>
 </p>
 
-<p>
-  <a href="https://voaneves.github.io/paru-site/">Site ao vivo</a> ·
-  <a href="#visao-geral">Visão geral</a> ·
-  <a href="#preview">Preview</a> ·
-  <a href="#arquitetura">Arquitetura</a> ·
-  <a href="#identidade">Identidade visual</a> ·
-  <a href="#edicao-e-execucao">Edição e execução</a> ·
-  <a href="#contato">Contato</a>
-</p>
-
 </div>
 
 <picture>
@@ -47,6 +37,19 @@
   <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/voaneves/paru-site/main/assets/brand/rule-light.svg" />
   <img alt="" src="https://raw.githubusercontent.com/voaneves/paru-site/main/assets/brand/rule-light.svg" width="100%" />
 </picture>
+
+<details>
+  <summary><strong>Conteúdo</strong> — ir direto para uma seção</summary>
+
+- [Site ao vivo](https://voaneves.github.io/paru-site/)
+- [Visão geral](#visao-geral)
+- [Preview desktop e mobile](#preview)
+- [Pipeline de build e conteúdo](#arquitetura)
+- [Identidade visual e paleta](#identidade)
+- [Edição de conteúdo e execução local](#edicao-e-execucao)
+- [Créditos e contato](#contato)
+
+</details>
 
 <a id="visao-geral"></a>
 ## Visão geral
